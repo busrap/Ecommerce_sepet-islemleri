@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "OzellikDegerEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<StrongTicaret.Web.UI.Models.OzellikTip>
+
+@* Ozellikdeger class'ına Insert işlemini yapacak olan view *@
+<div class="row">
+    <br /><br /><br />
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Özellik değeri eklemek için aşağıda ki alanları doldurunuz...
+            </header>
+
+            <div class="panel-body">
+
+                <form action="/Admin/OzellikDegerEkle" class="form-horizontal tasi-form" method="post">
+
+                    <div class="col-sm-10">
+                        <span class="help-block">Eklenen degerin özellik tipi </span>
+                    </div>
+                    @* OzellikTip'i select işleminde göstermek istediğim için, model yönteminde OzellikTip Class'ımı çektim *@
+                    <select class="form-control input-sm m-bot15" name="OzellikTipID">
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.Id">@item.Adi</option>
+
+                        }
+                    </select>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Özellik Değer Adı</label>
+                        <div class="col-sm-10">
+                            @* OzellikDeger Class'ımda Adi prop'una değer gönderiyorum(name="Adi").Dikkat edlmesi gereken nokta Class içerisinde ki prop'lar ile input name alanı isimler aynı olmalıdır.*@
+                            <input type="text" class="form-control" name="Adi">
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Açıklama</label>
+                        <div class="col-sm-10">
+                            @* OzellikTip Class'ımda Aciklama prop'una değer gönderiyorum(name="Aciklama")*@
+                            <input type="text" class="form-control" name="Aciklama">
+                            <span class="help-block">Eklenen özelliğin değerine ait birkaç açıklamada bulun...</span>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-danger" type="submit">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </div>
+</div>
+

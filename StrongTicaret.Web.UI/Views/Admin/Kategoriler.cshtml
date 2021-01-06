@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model IEnumerable<StrongTicaret.Web.UI.Models.Kategori>
+
+<section class="panel">
+    <header class="panel-heading"></header>
+    <br />    <br />
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <div class="clearfix">
+                <div class="btn-group">
+
+                    <a href="/Admin/KategoriEkle" class="btn btn-success">
+
+                        Yeni Kategori Ekle <i class="icon-plus"></i>
+                    </a>
+                    <br />
+                    <br />
+
+                </div>
+                
+            </div>
+            <div class="space15"></div>
+            <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                <thead>
+                    <tr>
+                        <th>Ürün Kategori Adı</th>
+                        <th>Açıklama</th>
+                        <th>Güncelle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                       
+                        
+                    <tr class="">
+                        <td>@item.Adi</td>
+                        <td>@item.Aciklama</td>
+
+
+
+                        <td>
+                            <a class="edit" href="/Admin/KategoriGuncelle/@item.Id">
+                                <i class="icon-pencil"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="delete" href="/Admin/KategoriSil/@item.Id">
+                                <i class="icon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

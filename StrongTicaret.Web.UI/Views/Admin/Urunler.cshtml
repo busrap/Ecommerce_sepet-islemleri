@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model IEnumerable<StrongTicaret.Web.UI.Models.Urun>
+
+
+@* Form List Ienumerable ile data çek *@
+
+<section class="panel">
+    <header class="panel-heading">
+     
+    </header>
+    <br />    <br /> 
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <div class="clearfix">
+                <div class="btn-group">
+
+                    <a href="/Admin/UrunEkle" class="btn btn-success">
+
+                        Yeni Ürün Ekle <i class="icon-plus"></i>
+                    </a>
+                    <br />
+                    <br /><br />
+
+                </div>
+                <div class="btn-group pull-right">
+
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">Print</a></li>
+                        <li><a href="#">Save as PDF</a></li>
+                        <li><a href="#">Export to Excel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space15"></div>
+            <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Açıklama</th>
+                        <th>Alış Fiyatı</th>
+                        <th>Satış Fiyatı</th>
+                        <th>Kategorisi</th>
+                        <th>Eklenme Tarihi</th>
+                        <th>Marka</th>
+                        <th>Son Kullanma Tarihi</th>
+                        <th>Resim Ekle</th>
+                        <th>Güncelle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr class="">
+                        <td>@item.Adi</td>
+                        <td>@item.Aciklama</td>
+                        <td>@item.AlisFiyati</td>
+                        <td class="center">@item.SatisFiyati</td>
+                        <td class="center">@item.Kategori.Adi</td>
+                        <td class="center">@item.EklenmeTarihi</td>
+                        <td class="center">@item.Marka.Adi</td>
+                        <td class="center">@item.SonKullanmaTarihi</td>
+
+                        <td>
+                            <a class="edit" href="/Admin/UrunResimEkle/@item.Id">
+                                <i class="icon-plus"></i>
+                            </a>
+                        </td>
+
+
+                        <td>
+                            <a class="edit" href="/Admin/UrunGuncelle/@item.Id">
+                                <i class="icon-pencil"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="delete" href="/Admin/UrunSil/@item.Id">
+                                <i class="icon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

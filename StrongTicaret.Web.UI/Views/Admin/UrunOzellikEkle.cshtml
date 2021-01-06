@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "UrunOzellikEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<StrongTicaret.Web.UI.Models.Urun>
+
+@section head{
+
+
+    <script src="~/Templates/Admin/js/jquery-1.8.3.min.js"></script>
+    <script>
+        //document.ready jquery kodu ile sayfa yüklendiği zaman çalışacağı anlamına gelmektedir.
+        $(document).ready(function myFunction() {
+
+           
+            //urunSelect id'li select'im change anında çalışacak jquery metodu
+            $("#urunSelect").change(function chgFunction() {
+              
+                //KategoriID değerini yakaladık
+                var kId = $(this).find("option:selected").attr("title");
+          
+
+                $.ajax({
+
+                    type: "GET",
+                    url: "/Admin/UrunOzellikTipWidget",
+                    //controller kısmına katId parametresine kId degerini gönderiyorum
+                    data: { katId: kId },
+                    success: function myFunction(veri) {
+                        $("#tip").html('');
+                        $("#tip").append(veri);
+                    },
+                    error: function myFunction() {
+                        alert("hata")
+                    }
+
+
+                });
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <br /><br /><br />
+    <div class="col-lg-12">
+
+        <section class="panel">
+            <header class="panel-heading">
+                Ürün Özellik Ekle
+            </header>
+            <br /><br /><br />
+            <div class="panel-body">
+                <form role="form" class="form-horizontal tasi-form" action="/Admin/UrunOzellikEkle" method="post">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Ürün</label>
+                        <div class="col-lg-4">
+
+                            <select class="form-control input-sm m-bot15" name="UrunID" id="urunSelect">
+
+                                <option value="" disabled selected>Ürün seçiniz...</option>
+
+                                @foreach (var item in Model)
+
+                                {
+                                    <option title="@item.KategoriID" value="@item.Id">@item.Adi</option>
+
+                                }
+
+
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div id="tip">
+
+                    </div>
+                    <div id="deger">
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-danger" type="submit">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+

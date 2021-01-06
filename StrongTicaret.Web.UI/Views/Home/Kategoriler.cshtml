@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+
+@model IEnumerable<StrongTicaret.Web.UI.Models.Kategori>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<div class="box">
+    <div class="container">
+        <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+            <div class="site-title">
+                <ul class="wrapper-arrows">
+                    <li><i class="icon-517 prev" title="left arrow"></i></li>
+                    <li><i class="icon-501 next" title="right arrow"></i></li>
+                </ul>
+                <div class="site-inside">
+                    <span>Kategoriler</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tesla-carousel-items">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-2 col-xs-6">
+                            <a href="#">
+                             <p>@item.Adi</p>
+                            </a>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    <h2>Kategoriler</h2>
+                 
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Kategori Adı</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>Mary</td>
+                                <td>Moe</td>
+                                <td>mary@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>July</td>
+                                <td>Dooley</td>
+                                <td>july@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+</div>

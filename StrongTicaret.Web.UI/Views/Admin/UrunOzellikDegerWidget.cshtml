@@ -1,0 +1,19 @@
+﻿
+
+@model IEnumerable<StrongTicaret.Web.UI.Models.OzellikDeger>
+
+
+<div class="form-group">
+    <label class="col-lg-2 control-label">Özellik Deger</label>
+    <div class="col-lg-10">
+
+        <select class="form-control input-sm m-bot15" name="OzellikDegerID">
+            <option value="" disabled selected>Seçilen tipin değerini belirleyiniz...</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Adi</option>
+            }
+        </select>
+
+    </div>
+</div> 

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "UrunOzellikleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model IEnumerable<StrongTicaret.Web.UI.Models.UrunOzellik>
+
+<section class="panel">
+    <header class="panel-heading"></header>
+    <br />    <br />
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <div class="clearfix">
+                <div class="btn-group">
+
+                    <a href="/Admin/UrunOzellikEkle" class="btn btn-success">
+
+                        Yeni Ürün Özellik Ekle <i class="icon-plus"></i>
+                    </a>
+                    <br /> <br />   <br />
+
+                </div>
+
+            </div>
+            <div class="space15"></div>
+            <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Özellik Tip Adı</th>
+                        <th>Özellik Değer Adı</th>
+                        <th>Güncelle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @* Model de var olan data'yı çekmek için foreach ile döneriz *@
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="">
+                            @if (item.Urun != null)
+                            {
+                                <td>@item.Urun.Adi</td>
+                            }
+
+                            @if (item.OzellikTip != null)
+                            {
+                                <td>@item.OzellikTip.Adi</td>
+                            }
+
+                            @if (item.OzellikDeger != null)
+                            {
+                                <td>@item.OzellikDeger.Adi</td>
+                            }
+
+
+
+                            <td>
+                                <a class="edit" href="#">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                            </td>
+                            @if (item.Urun!=null && item.OzellikTip!=null&&item.OzellikDeger!=null)
+                            {
+                            <td>
+                                <a class="delete" href="@Url.Action("UrunOzellikSil","Admin",new {urunId=item.OzellikTipID,degerId=@item.OzellikDegerID})">
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                            }
+                            
+                        </tr>
+
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

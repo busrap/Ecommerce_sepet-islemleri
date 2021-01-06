@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "OzellikTipleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model IEnumerable<StrongTicaret.Web.UI.Models.OzellikTip>
+
+@* OzellikTip Listeleme işlemi yapan view *@
+
+<section class="panel">
+    <header class="panel-heading"></header>
+    <br />    <br />
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <div class="clearfix">
+                <div class="btn-group">
+
+                    <a href="/Admin/OzellikTipEkle" class="btn btn-success">
+
+                        Yeni Özellik Tip Ekle <i class="icon-plus"></i>
+                    </a>
+                    <br />
+                    <br />
+                    <br /><br />
+                </div>
+                
+            </div>
+            <div class="space15"></div>
+            <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                <thead>
+                    <tr>
+                        <th>Özellik Tip Adı</th>
+                        <th>Açıklama</th>
+                        <th>Kategorisi</th>
+                        <th>Güncelle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @* Model de var olan data'yı çekmek için foreach ile döneriz *@
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="">
+                            <td>@item.Adi</td>
+                            <td>@item.Aciklama</td>
+
+                            @if (item.Kategori != null)
+                            {
+                                <td>@item.Kategori.Adi</td>
+                            }
+
+
+                            <td>
+                                <a class="edit" href="/Admin/OzellikTipGuncelle/@item.Id">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="delete" href="/Admin/OzellikTipSil/@item.Id">
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

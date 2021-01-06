@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Ürün Resim Ekle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@* form post *@
+<div class="row">
+    <div class="col-lg-12" style="margin-top:150px;">
+        <section class="panel">
+            <div class="panel-body">
+                <div class="text-center mbot30">
+                    <h3 class="timeline-title" style="margin-right:230px;">Ürün Resim Ekle</h3>
+                    <p class="t-info" style="margin-right:230px;">Eklenecek ürüne ait resim</p>
+                </div>
+
+                <form action="/Admin/UrunResimEkle" method="post" enctype="multipart/form-data">
+                    @* Gizli bir hidden input içerisinde model'den gelen action metodumun parametresi olan uId değerini tutuyorum ki controller tarafında bu ıd değerini çekebileyim
+                        Dikkat: form'u post ettiğimiz action hangisi ise input nesnemde ki name ve parametre isimleri aynı olmalı
+                        *@
+                    <input type="hidden" name="uId" value="@Model" />
+                    <div class="form-group">
+
+                        <div class="controls col-md-12">
+
+                            <!-- #region Boş Div, row hizalama amaçlı koydum -->
+                            <div class="col-md-4">
+
+                            </div>
+                            <!-- #endregion -->
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4"></label>
+                                    <div class="controls col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                            <span class="btn btn-white btn-file">
+                                                <span class="fileupload-new"><i class="icon-paper-clip"></i>resim seç</span>
+
+                                                <input name="fileUpload" type="file" class="default" />
+
+                                                <button class="btn btn-success" type="submit">Kaydet</button>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @Html.Raw(TempData["msg"])
+
+
+                            <!-- #region Boş Div, row hizalama amaçlı koydum -->
+                            <div class="col-md-4">
+
+                            </div>
+                            <!-- #endregion -->
+
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </section>
+    </div>
+
+</div>
